@@ -18,17 +18,12 @@ int	check_map(t_info *info, char *argv);
 int	ft_parsing(t_info, char *argv);
 
 /*get_next_line*/
-int	get_next_line(t_info *info, int fd, char **str);
+int	get_next_line(int fd, char **line, int error);
 #endif
-/* error
- * 1 : argv[1] is not a .cub file
- * 2 : argv[1] is a directory
- * 3 : 
- * 4
- * 5
- * 6
- * 7
- *
+/*
+ * info->error
+ * 0 : default
+ * 1 : error and need to free gnl buff which is static variable
  *
  * the ft_error will end with exti(0) eventually
  */

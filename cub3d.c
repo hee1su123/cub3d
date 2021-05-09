@@ -1,15 +1,18 @@
-#include "cub3d.h"
+include "cub3d.h"
 
 int	ft_parsing(t_info *info, char *argv)
 {
+	int	gnl_ret;
 	int	fd;
 	char	*str;
 
-	str = 0;
 	if ((fd = open(argv, O_DIRECTORY)) != -1 || (fd = open(argv, O_RDONLY)) == -1)
 		ft_error(info, "Failed to open File or is Directory");
-	while (get_next_line(info, fd, &str) > 0)
+	str = 0;
+	gnl_ret = 1;
+	while (gnl_ret > 0)
 	{
+		gnl_ret = get_next_line(fd, &str, info->error);
 		parsing_map(info, &str);
 
 
