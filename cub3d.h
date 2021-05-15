@@ -4,12 +4,21 @@
 # include "../minilibx-linux/mlx.h"
 # include <unisdt.h>
 # include <stdlib.h>
+# include <stdio.h>
 
+# define FORWARD_W	119
+# define BACK_S		115
+# define RIGHT_D	100
+# define LEFT_A		97
+# define ROTATE_R
+# define ROTATE_L
 # define BUFFER_SIZE	4096
 
 typedef struct	s_info
 {
 	int	error;
+	int	save;
+
 
 }
 
