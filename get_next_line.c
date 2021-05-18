@@ -40,10 +40,10 @@ int	get_next_line(int fd, char **line, int error)
 	int		read_len;
 	int		loc_nextline;
 
-	if (error == 1 && backup != NULL)
+	if (error == 1 && *save != NULL)
 	{
-		free(backup);
-		return (-1);
+		free(*save);
+		ft_error(info, "Error while parsing map elements");
 	}
 	if (fd < 0 || line == 0)
 		return (-1);

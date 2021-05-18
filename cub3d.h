@@ -21,13 +21,17 @@ typedef struct	s_info
 
 
 }
+/* save.c */
+int	check_save(t_info *info, char **arg);
 
 /* main.c */
-int	check_map(t_info *info, char *argv);
-int	ft_parsing(t_info, char *argv);
+int	check_map(t_info *info, char *arg);
+int	parsing_elements(t_info *info, char *arg);
+int	parsing_map(t_info *info, char *arg);
 
 /*get_next_line*/
 int	get_next_line(int fd, char **line, int error);
+
 #endif
 /*
  * info->error
