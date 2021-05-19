@@ -6,6 +6,22 @@ int	parsing_map(t_info *info, char *arg)
 	int	gnl_ret;
 	char	*str;
 
+	gnl_ret = 0;
+	str = 0;
+	fd = open(arg, O_RDONLY);
+	if (!(info->map = (char **)malloc(sizeof(char *) * info->row)))
+		ft_error(info, "Failed malloc map");
+	info->inmap = 0;
+	while (gnl_ret != 0)
+	{
+		gnl_ret = get_next_line(info, fd, &str);
+		if (info->inmap == 1 || check_inmap(info, str) != 0)
+			info->error = make_map(info, str, 0);
+		free(str);
+	}// I still need to check whether map is valid
+	close(fd);
+	return (0);
+}
 
 
 int	parsing_elements(t_info *info, char *arg)
@@ -21,13 +37,13 @@ int	parsing_elements(t_info *info, char *arg)
 	info->error = 0;
 	while (gnl_ret != 0)
 	{
-		gnl_ret = get_next_line(fd, &str, info->error);
+		gnl_ret = get_next_line(info, fd, &str);
 		parsing_line(info, &str);// think a little more
 		free(str);
 	}
 	close(fd);
-	if (info->                 )// think more
-		ft_error(info, "");// think more
+	if (info->row == 0 || info->col == 0)// think more
+		ft_error(info, "Not a Valid map size");// think more
 	parsing_map(info, arg);
 	return (0);
 }
@@ -82,6 +98,8 @@ int	main(int argc, char **argv)
 		ft_error(&info, "Not a Valid File");
 	else
 		ft_error(&info, "Not a Valid Save option");
+	if (check_valid_map(&info) != 0)
+		ft_error(&info, "Not a Valid map");
+	start_raycast(&info);
 	return (0);
-
 }

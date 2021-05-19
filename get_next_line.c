@@ -33,14 +33,14 @@ int	check_nextline(char *save)
 		return (-1);
 }
 
-int	get_next_line(int fd, char **line, int error)
+int	get_next_line(t_info *info, int fd, char **line)
 {
 	static char	*save;
 	char		*buff;
 	int		read_len;
 	int		loc_nextline;
 
-	if (error == 1 && *save != NULL)
+	if (info->error == 1 && *save != NULL)
 	{
 		free(*save);
 		ft_error(info, "Error while parsing map elements");

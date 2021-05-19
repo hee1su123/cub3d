@@ -16,21 +16,43 @@
 
 typedef struct	s_info
 {
-	int	error;
 	int	save;
-
+	// parsing elements
+	int	error;
+	char	*R;
+	char	*F;
+	char	*C;
+	char	*I;
+	char	*N;
+	char	*S;
+	char	*W;
+	char	*E;
+	int	inmap;
+	int	RenderX;
+	int	RenderY;
+	int	row;
+	int	col;
+	// parsing map
+	char	**map;
 
 }
-/* save.c */
-int	check_save(t_info *info, char **arg);
+/* parsing_line.c */
+int	check_map_size(t_info *info, char *str);
+int	resolution_color(t_info *info, char **str);
+int	path_texture(t_info *info, char **texture, char *str);
+int	parsing_line(t_info *info, char **str);
 
 /* main.c */
 int	check_map(t_info *info, char *arg);
+int	check_save(t_info *info, char **arg);
 int	parsing_elements(t_info *info, char *arg);
 int	parsing_map(t_info *info, char *arg);
 
-/*get_next_line*/
-int	get_next_line(int fd, char **line, int error);
+/* get_next_line */
+int	get_next_line(t_info *info, int fd, char **line);
+
+/* error.c */
+void	ft_error(t_info *info, char *str);
 
 #endif
 /*

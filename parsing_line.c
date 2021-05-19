@@ -1,6 +1,17 @@
 #include "cub3d.h"
 
-int	
+int	check_map_size(t_info *info, char *str)
+{
+	int	i;
+
+	i = 0;
+	if (info->N == 0 || info->S == 0 || info->W == 0 || info->E == 0 || info->I == 0  || info->F == -1 || info->C == -1)
+		return (info->error = 1);
+	if (ft_strlen(str) > info->col)
+		info->col = ft_strlen(str);
+	info->row++;
+}
+
 
 int	resolution_color(t_info *info, char **str)
 {
@@ -11,15 +22,15 @@ int	resolution_color(t_info *info, char **str)
 	{
 		if (RenderX != 0 || RenderY != 0)
 			return (info->error = 1);
-		if (get_render_size(*str, info) != 0)
+		if (get_render_size(info, *str) != 0)
 			return (info->error = 1);
 		if (info->RenderX == 0 || info->RenderY == 0)
 			return (info->error = 1);
 	}
 	else if (*str[i] == 'F')
-		return (get_color(*str, info));		
+		return (get_color(info, *str));		
 	else if (*str[i] == 'C')
-		return (get_color(*str, info));
+		return (get_color(info, *str));
 	return (0);
 }
 
@@ -55,7 +66,7 @@ int	parsing_line(t_info *info, char **str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '\n' && info->inside_map == 0)
+	if (str[i] == '\n' && info->inmap == 0)
 		return (0);
 	else if (str[i] == 'N' && str[i + 1] == 'O' && info->inmap == 0)
 		path_texture(info, &info->N, *str);
