@@ -35,8 +35,18 @@ int	check_valid_map(t_info *info)
 
 	i = 0;
 	j = 0;
-	while (info->map[i][j] != '\0')
+	while (info->map[i] != '\0')
 	{
-		if (info->map[i][j] == '4')
+		while (info->map[i][j] != '\0')
 		{
-			check_udrs
+			if (info->map[i][j] == '0' || info->map[i][j] == '2')
+			{
+				if (check_udrl(info, i, j) != 0)
+					return (-1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
