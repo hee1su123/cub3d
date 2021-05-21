@@ -6,35 +6,60 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define FORWARD_W	119
-# define BACK_S		115
-# define RIGHT_D	100
-# define LEFT_A		97
+# define FORWARD_W		119
+# define BACK_S			115
+# define RIGHT_D		100
+# define LEFT_A			97
 # define ROTATE_R
 # define ROTATE_L
-# define BUFFER_SIZE	4096
+# define BUFFER_SIZE		4096
+# define texH			64
+# define texW			64
+# define X_EVENT_KEY_PRESS	2
+# define X_EVENT_KEY_RELEASE	17
+
+typedef struct	s_ray
+{
+	void	*mlx;
+	void	*win;
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+	double	mvSpeed;
+	double	rtSpeed;
+	//
+	t_img	img;
+	int	**buf;
+	int	**texture;
 
 typedef struct	s_info
 {
 	int	save;
-	// parsing elements
 	int	error;
-	char	*R;
-	char	*F;
-	char	*C;
+	// parsing
+	int	inmap;
+	int	F;
+	int	C;
+	int	RenderX;
+	int	RenderY;
 	char	*I;
 	char	*N;
 	char	*S;
 	char	*W;
 	char	*E;
-	int	inmap;
-	int	RenderX;
-	int	RenderY;
 	int	row;
 	int	col;
 	// parsing map
 	char	**map;
-
+	char	startNEWS;
+	int	startX;
+	int	startY;
+	// struct
+	t_ray	ray;
+	int	num_spr;
 }
 /* parsing_line.c */
 int	check_map_size(t_info *info, char *str);

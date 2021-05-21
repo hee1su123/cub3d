@@ -27,9 +27,9 @@ int	make_map(t_info *info, char *str, int j)
 		if (str[j] == 'N' || str[j] == 'S' || str[j] == 'W' || str[j] == 'E')
 		{
 			info->map[i][j] = '0';
-			info->posNEWS = str[j];
-			info->posX = i;
-			info->posY = j;
+			info->startNEWS = str[j];
+			info->startX = i;
+			info->startY = j;
 		}
 		else if (str[j] == ' ')
 			info->map[i][j] = '4';

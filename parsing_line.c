@@ -81,7 +81,7 @@ int	parsing_line(t_info *info, char **str)
 	else if (str[i] == 'R' || str[i] == 'F' || str[i] == 'C' && info->inmap == 0)
 		resolution_color(info, str);
 	else if (info->inmap == 1 || check_inmap(info, *str) != 0)
-		check_map_size(info, *str);// change info->inside_map value // check also \n between the map
+		check_map_size(info, *str);// change info->inmap value // check also \n between the map
 	else
 		info->error = 1;
 	return (0);
