@@ -1,9 +1,5 @@
 #include "cub3d.h"
 
-void	draw(t_info *info)
-{
-
-
 int	raycast(t_info *info)
 {
 	info->ray.x = 0;
@@ -13,8 +9,10 @@ int	raycast(t_info *info)
 		ft_init_ray2(info);
 		//several fuctions
 	}
-	draw(info);
-	key(info);
+	mlx_put_image_to_window(info->ray.mlx, info->ray.win, info->ray.img.img, 0, 0);
+	mv_front_back(info);
+	mv_right_left(info);
+	rt_right_left(info);
 	return (0);
 }
 
