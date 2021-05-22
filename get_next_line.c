@@ -40,6 +40,11 @@ int	get_next_line(t_info *info, int fd, char **line)
 	int		read_len;
 	int		loc_nextline;
 
+	if (info->error == 2 && *save != NULL)
+	{
+		free(*save);
+		ft_error(info, "Error while parsing map");
+	}
 	if (info->error == 1 && *save != NULL)
 	{
 		free(*save);

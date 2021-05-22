@@ -89,7 +89,12 @@ int	check_inmap(t_info *info, char *str)
 	{
 		if (ft_strchr("012NSWE \n", str[i]) == NULL)
 		{
-			info->error = 1;
+			info->error = 1;// or make another member in structure to make error later
 			return (0);
 		}
-		
+		i++;
+	}
+	info->inmap = 1;
+	return (1);
+}
+

@@ -68,19 +68,19 @@ int	parsing_line(t_info *info, char **str)
 	i = 0;
 	if (str[i] == '\n' && info->inmap == 0)
 		return (0);
-	else if (str[i] == 'N' && str[i + 1] == 'O' && info->inmap == 0)
+	else if ((str[i] == 'N' && str[i + 1] == 'O') && info->inmap == 0)
 		path_texture(info, &info->N, *str);
-	else if (str[i] == 'S' && str[i + 1] == 'O' && info->inmap == 0)
+	else if ((str[i] == 'S' && str[i + 1] == 'O') && info->inmap == 0)
 		path_texture(info, &info->S, *str);
-	else if (str[i] == 'W' && str[i + 1] == 'E' && info->inmap == 0)
+	else if ((str[i] == 'W' && str[i + 1] == 'E') && info->inmap == 0)
 		path_texture(info, &info->W, *str);
-	else if (str[i] == 'E' && str[i + 1] == 'A' && info->inmap == 0)
+	else if ((str[i] == 'E' && str[i + 1] == 'A') && info->inmap == 0)
 		path_texture(info, &info->E, *str);
-	else if (str[i] == 'S' && str[i + 1] != 'O' && info->inmap == 0)
+	else if ((str[i] == 'S' && str[i + 1] != 'O') && info->inmap == 0)
 		path_texture(info, &info->I, *str);
-	else if (str[i] == 'R' || str[i] == 'F' || str[i] == 'C' && info->inmap == 0)
+	else if ((str[i] == 'R' || str[i] == 'F' || str[i] == 'C') && info->inmap == 0)
 		resolution_color(info, str);
-	else if (info->inmap == 1 || check_inmap(info, *str) != 0)
+	else if (check_inmap(info, *str) != 0)
 		check_map_size(info, *str);// change info->inmap value // check also \n between the map
 	else
 		info->error = 1;

@@ -61,10 +61,10 @@ void	start_raycast(t_info *info)
 	int	j;
 
 	i = 0;
-	j = 0;
 	check_errors(info);//verify errors occured before
 	while (i < info->row)
 	{
+		j = 0;
 		while (j < info->col)
 		{
 			if (info->map[i][j++] == '2')

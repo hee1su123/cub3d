@@ -15,7 +15,7 @@ int	parsing_map(t_info *info, char *arg)
 	while (gnl_ret != 0)
 	{
 		gnl_ret = get_next_line(info, fd, &str);
-		if (info->inmap == 1 || check_inmap(info, str) != 0)
+		if (check_inmap(info, str) != 0)
 			info->error = make_map(info, str, 0);
 		free(str);
 	}// I still need to check whether map is valid
