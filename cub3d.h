@@ -18,6 +18,17 @@
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_RELEASE	17
 
+typedef struct	s_img
+{
+	void	*img;
+	int	*data;
+	int	size_l;
+	int	endian;
+	int	bpp;
+	int	img_W;
+	int	img_H;
+}		t_img;
+
 typedef struct	s_ray
 {
 	void	*mlx;

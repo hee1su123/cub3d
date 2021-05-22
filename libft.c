@@ -1,5 +1,5 @@
 #include "cub3d.h"
 
-ft_strchr
+char	*ft_strchr(char *str, char c)
 
-ft_strlen
+int	ft_strlen(char *str)

@@ -2,6 +2,8 @@
 
 int	check_udrl(t_info *info, int i, int j)
 {
+	if (i == 1 || i == info->row - 1 || j = 1)
+		return (-1);
 	if (info->map[i + 1][j] == '4' || info->map[i + 1][i] == '\0')
 		return (-1);
 	if (info->map[i][j + 1] == '4' || info->map[i][j + 1] == '\0')
@@ -13,7 +15,8 @@ int	check_udrl(t_info *info, int i, int j)
 	return (0);// if map[1][j] it can't be 0 or 2
 	// and aloso if map[last][j] it can't be 0 or 2
 	// and if map[i][1] it can't be 0 or 2
-	// and map[i][last] is different becase there is '\0' 
+	// and map[i][last] is different becase there is '\0'
+}
 
 
 int	make_map(t_info *info, char *str, int j)

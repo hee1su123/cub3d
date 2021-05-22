@@ -28,9 +28,9 @@ int	resolution_color(t_info *info, char **str)
 			return (info->error = 1);
 	}
 	else if (*str[i] == 'F')
-		return (get_color(info, *str));		
+		info->F = get_color(info, *str);		
 	else if (*str[i] == 'C')
-		return (get_color(info, *str));
+		info->C = get_color(info, *str);
 	return (0);
 }
 
@@ -41,7 +41,7 @@ int	path_texture(t_info *info, char **texture, char *str)
 
 	if (*texture != 0)
 		return (info->error = 1);
-	if (ft_strchr(str, '.') == 0 || ft_strchr(str, '/'  == 0))
+	if (ft_strchr(str, '.') == 0 || ft_strchr(str, '/') == 0)
 		return (info->error = 1);
 	i = (str[i] == 'S' && str[i + 1] != 'O') ? 1 : 2;
 	while (str[i] != '.')
